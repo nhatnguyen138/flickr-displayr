@@ -1,0 +1,58 @@
+.Navbar {
+  width: 100%;
+  background-color: #2e3a46;
+}
+
+.NavbarWidth {
+  max-width: 1148px;
+  height: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.NavbarWidth .Logo {
+  height: 100%;
+  cursor: pointer;
+}
+
+.NavbarWidth ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.NavbarWidth ul li {
+  list-style-type: none;
+}
+
+.NavbarWidth ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.NavbarWidth ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 480px) {
+  .NavbarWidth {
+    height: 45px;
+  }
+}
+
+@media (min-width: 768px) {
+  .NavbarWidth {
+    height: 60px;
+    padding: 10px 30px;
+  }
+  .NavbarWidth ul {
+    gap: 30px;
+  }
+  .NavbarWidth ul li a {
+    font-size: 1.2rem;
+  }
+}

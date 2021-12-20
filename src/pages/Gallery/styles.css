@@ -1,0 +1,43 @@
+.GalleryContainer {
+  width: 80%;
+  max-width: 1148px;
+  margin: 0 auto;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.GalleryContainer .Search {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: 2px solid #0063dc;
+  border-radius: .25rem;
+}
+
+.GalleryContainer .Search:focus-within {
+  border: 2px solid #ff0084;
+  transition: 0.25s;
+}
+
+.GalleryContainer .Search input {
+  width: 90%;
+  height: 1.5rem;
+  outline: none;
+  padding: .375rem .75rem;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.GalleryContainer .Search button {
+  width: 60px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

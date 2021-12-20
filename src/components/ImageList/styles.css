@@ -1,0 +1,93 @@
+.BlackCover {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.BlackCover .Container {
+  margin: 0 auto;
+}
+
+.BlackCover .close {
+  filter: invert(100%) sepia(28%) saturate(2%) hue-rotate(286deg) brightness(114%) contrast(100%);
+  position: fixed;
+  z-index: 1000;
+  top: 15px;
+  right: 15px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.BlackCover .Container .Img {
+  width: 90%;
+  margin: 0 5% auto 5%;
+}
+
+.BlackCover .Container .Txt {
+  position: fixed;
+  background-color: rgba(255, 0, 132, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 15px 90px 15px 15px;
+}
+
+.SearchCaption {
+  font-size: 2rem;
+  margin-top: 80px;
+}
+
+.ImageList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.ImageList .Image {
+  width: 270px;
+  height: 270px;
+  border: 3px solid #0063dc;
+  border-radius: .25rem;
+  object-fit: cover;
+  background-image: url("https://via.placeholder.com/270x270?text=Unvailable");
+}
+
+.ImageList .Image:hover {
+  border: 3px solid #ff0084;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.LoadMore {
+  background-color: #ff0084;
+  color: white;
+  border-radius: .25rem;
+  padding: 15px;
+  margin: 40px auto 80px auto;
+  cursor: pointer;
+}
+
+@media (min-width: 590px) {
+  .ImageList {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 880px) {
+  .BlackCover .Container .Txt {
+    padding-left: 40px;
+  }
+  .ImageList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

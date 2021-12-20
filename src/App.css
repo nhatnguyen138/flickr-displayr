@@ -1,0 +1,15 @@
+body {
+  min-width: 350px;
+  background-color: #1f1f21;
+  color: white;
+}
+
+.App {
+  color: white;
+}
+
+.App .AppContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

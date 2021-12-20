@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Anton");
+
+.CreditContainer {
+  width: 100vw;
+}
+
+.CreditContainer .CreditWidth {
+  max-width: 1148px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.CreditContainer .CreditWidth .Content {
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.CreditContainer .CreditWidth .Content .Portrait {
+  width: 140px;
+  border: 3px solid #ff0084;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.CreditContainer .CreditWidth .Socials {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
+  margin-top: 80px;
+}
+
+.CreditContainer .CreditWidth .Socials .Social {
+  width: 60px;
+  filter: invert(17%) sepia(100%) saturate(6955%) hue-rotate(324deg) brightness(107%) contrast(103%);
+}
+
+@media (min-width: 480px) {
+  .CreditContainer .CreditWidth .Content .Portrait {
+    width: 180px;
+  }
+  .CreditContainer .CreditWidth .Content .Text {
+    font-size: 1.15rem;
+  }
+  .CreditContainer .CreditWidth .Socials .Social {
+    width: 65px;
+  }
+}
+
+@media (min-width: 768px) {
+  
+}
