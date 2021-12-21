@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/api';
+import Displayr from '../Displayr';
 import './styles.css';
 
 export default function ImageList(props) {
   const { tag } = props;
   const [loading, setLoading] = useState(false);
   const [pictures, setPictures] = useState([]);
-  const [number, setNumber] = useState(12);
+  const [page, setPage] = useState(1);
 
   const [source, setSource] = useState("");
   const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [owner, setOwner] = useState("");
 
-
+  // Re-render when new search is made
   useEffect(() => {
     if (tag!=="") {
-      setPictures([]);
-      setNumber(12);
-      setLoading(true);
       try {
         const getImages = async () => {
-          const { data } = await API.getImages(tag,number.toString(),"1");
-          setPictures(data.photos.photo);
+          const { data } = await API.getImages(tag,"12",page.toString());
+          setPictures(pictures.concat(data.photos.photo));
           setLoading(false);
         }
+        setPictures([]);
+        setPage(1);
+        setLoading(true);
         getImages();
       } catch (err) {
         console.log(err);
@@ -32,13 +33,13 @@ export default function ImageList(props) {
     } 
   }, [tag]);
 
+  // Re-render when more images need to be loaded
   useEffect(() => {
-    if (tag!=="") {
-      setLoading(true);
+    if (page!==1) {
       try {
         const getImages = async () => {
-          const { data } = await API.getImages(tag,number.toString(),"1");
-          setPictures(data.photos.photo);
+          const { data } = await API.getImages(tag,"12",page.toString());
+          setPictures(pictures.concat(data.photos.photo));
           setLoading(false);
         }
         getImages();
@@ -46,7 +47,7 @@ export default function ImageList(props) {
         console.log(err);
       }
     } 
-  }, [number]);
+  }, [page]);
 
   const handleClick = (src, id, title, owner) => {
     setSource(src);
@@ -58,18 +59,13 @@ export default function ImageList(props) {
   return (
     <>
     {source && source!=="" &&
-      <div className="BlackCover">
-        <div className="Container">
-          <img className="Img" src={source} alt="" />
-          <div className="Txt">
-            <div className="Caption">
-              <p><span style={{fontSize:"1.1rem",fontWeight:"bold"}}>{title}</span> by user-{owner}</p>
-              <p style={{fontSize:"0.95rem",marginLeft:"10px"}}>(Image ID: {id})</p>
-            </div>
-          </div>
-        </div>
-        <img className="close" src="/images/close.svg" alt="close" onClick={() => handleClick("", "", "", "")} />
-      </div>
+      <Displayr
+        source={source}
+        id={id}
+        title={title}
+        owner={owner}
+        handleClick={handleClick}
+      />
     }
     {loading ?
       <div className="SearchCaption">Loading...</div>
@@ -85,15 +81,12 @@ export default function ImageList(props) {
               )
             })}
           </div>
-          {pictures.length%12===0 && pictures.length*2!==number &&
-            <div className="LoadMore" onClick={() => setNumber(number+12)}>Load More</div>
+          {pictures.length%12===0 && pictures.length*2!==page*12 &&
+            <div className="LoadMore" onClick={() => setPage(page+1)}>Load More</div>
           }
         </>
         : (tag!=="" && <div className="SearchCaption">No photos found with the keyword '{tag}'</div> )
-      
-    }
-      
+    }   
     </>
-    
   );
 }
